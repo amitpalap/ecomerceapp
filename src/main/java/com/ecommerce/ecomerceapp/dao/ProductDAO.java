@@ -1,7 +1,6 @@
 package com.ecommerce.ecomerceapp.dao;
 
 import com.ecommerce.ecomerceapp.entity.Product;
-import com.ecommerce.ecomerceapp.repository.ProductRepository;
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,8 +17,7 @@ public class ProductDAO {
 	@Autowired
     private SessionFactory sessionFactory;
 
-	@Autowired
-	private ProductRepository productRepository;
+
 
 	@SuppressWarnings("unchecked")
 	public Product getProductById(long id) {
@@ -73,8 +71,11 @@ public class ProductDAO {
 
 	@SuppressWarnings("unchecked")
 	public List<Product> getAllProducts() {
-		//List<Product> list = this.sessionFactory.getCurrentSession().createQuery("from Product order by name").list();
-		return productRepository.findAll();
+		List<Product> list = this.sessionFactory.getCurrentSession().createQuery("from Product order by name", Product.class).list();
+		System.out.println(list);
+		return list;
+
+
 
 	}
 	

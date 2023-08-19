@@ -1,7 +1,6 @@
 package com.ecommerce.ecomerceapp.dao;
 
 import com.ecommerce.ecomerceapp.entity.User;
-import com.ecommerce.ecomerceapp.repository.UserRepository;
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,8 +18,7 @@ public class UserDAO {
 	@Autowired
     private SessionFactory sessionFactory;
 
-	@Autowired
-	private UserRepository userRepository;
+
 
 	
 	@SuppressWarnings("unchecked")
@@ -49,7 +47,7 @@ public class UserDAO {
 	}
 	@SuppressWarnings("unchecked")
 	public User getUserByEmailId(String emailId) {
-		List<User> list = this.sessionFactory.getCurrentSession().createQuery("from User where emailid='" + emailId + "'").list();
+		List<User> list = this.sessionFactory.getCurrentSession().createQuery("from User where emailId='" + emailId + "'").list();
 		if (list.size() > 0)
 			return (User) list.get(0);
 		else
