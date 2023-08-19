@@ -38,6 +38,7 @@ public class SpringServletConfig {
         dataSource.setUsername("root");
         dataSource.setPassword("sudhir");
 
+
         return dataSource;
     }
 
@@ -46,7 +47,7 @@ public class SpringServletConfig {
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setDataSource(dataSource());
         sessionFactory.setPackagesToScan(
-                new String[] { "entity class package name so it can scan them" });
+                new String[] { "com.ecommerce.ecomerceapp.entity" });
 
 
         return sessionFactory;

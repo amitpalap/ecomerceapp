@@ -71,7 +71,7 @@ public class ProductDAO {
 
 	@SuppressWarnings("unchecked")
 	public List<Product> getAllProducts() {
-		List<Product> list = this.sessionFactory.getCurrentSession().createQuery("from Product order by name", Product.class).list();
+		List<Product> list = this.sessionFactory.getCurrentSession().createQuery("from Product").list();
 		System.out.println(list);
 		return list;
 
